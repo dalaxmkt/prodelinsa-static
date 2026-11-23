@@ -494,23 +494,23 @@
       openCart();
       return;
     }
-    if (target.id === "cart-backdrop") closeCart();
-    if (target.id === "close-cart") closeCart();
-    if (target.id === "product-modal-backdrop" || target.id === "close-product-modal") closeProductModal();
-    if (target.id === "explore-catalog") {
+    if (target.closest("#cart-backdrop")) closeCart();
+    if (target.closest("#close-cart")) closeCart();
+    if (target.closest("#product-modal-backdrop, #close-product-modal")) closeProductModal();
+    if (target.closest("#explore-catalog")) {
       closeCart();
       $("#catalogo").scrollIntoView({ behavior: "smooth" });
     }
-    if (target.id === "clear-cart") {
+    if (target.closest("#clear-cart")) {
       cartItems = [];
       persistCart();
       renderCart();
     }
-    if (target.id === "reset-filters") {
+    if (target.closest("#reset-filters")) {
       selectedCategory = "Todos";
       setSearch("");
     }
-    if (target.id === "dismiss-whatsapp-tip") $("#whatsapp-tip").classList.add("is-hidden");
+    if (target.closest("#dismiss-whatsapp-tip")) $("#whatsapp-tip").classList.add("is-hidden");
   }
 
   function init() {
